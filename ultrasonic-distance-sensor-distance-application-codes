@@ -1,0 +1,30 @@
+int echoPin = 9;
+int trigPin = 10;
+long sure;
+long uzaklik;
+
+
+void setup()
+{
+  pinMode(echoPin, INPUT);
+  pinMode(trigPin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  digitalWrite(trigPin, LOW);
+  delay(2000);
+  digitalWrite(trigPin, HIGH);
+  delay(10000);
+  digitalWrite(trigPin, LOW);
+  sure=pulseIn(echoPin,HIGH);
+  uzaklik=(sure/2)/29.154;
+  
+  Serial.print("Mesafe:");
+  Serial.print(uzaklik);
+  Serial.print(" CM ");
+    
+  delay(100);
+  
+}
